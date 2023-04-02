@@ -3,10 +3,43 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Taskmanager"
+        xmlns:local="clr-namespace:Taskmanager" 
+        xmlns:viewmodels="clr-namespace:Taskmanager.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" 
+        Height="450" 
+        Width="800"
+        WindowStyle="None"
+        ResizeMode="CanResizeWithGrip"
+        AllowsTransparency="True"
+        Opacity="1"
+        Background="Wheat">
+
+    <Window.DataContext>
+        <viewmodels:ViewModelTest/>
+    </Window.DataContext>
+    
+    <Grid Opacity="1">
         
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0"
+                    Grid.ColumnSpan="2"
+                    Background="#271821"
+                    Opacity="1">
+        </StackPanel>
+
+        <TextBlock  Grid.Row="1"
+                    FontSize="{StaticResource H1}"
+                    Text="{Binding Cliks}"/>
+        <Button Grid.Column="1" Content="Button" HorizontalAlignment="Left" Margin="377,215,0,0" Grid.Row="1" VerticalAlignment="Top"/>
     </Grid>
 </Window>
