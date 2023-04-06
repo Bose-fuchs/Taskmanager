@@ -97,7 +97,7 @@
     </Compile>
     <Compile Include="Models\TestModel.cs" />
     <Compile Include="ViewModels\Base\VM_Base.cs" />
-    <Compile Include="ViewModels\ViewModelTest.cs" />
+    <Compile Include="ViewModels\MainWindow_VM.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -131,8 +131,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
-    <Folder Include="Resources\" />
     <Folder Include="Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\cancel.svg" />
+    <Resource Include="Resources\Images\maximize.svg" />
+    <Resource Include="Resources\Images\minimize.svg" />
+    <Resource Include="Resources\Images\LogoIcon.png" />
+    <Content Include="Resources\Images\LogoIcon.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

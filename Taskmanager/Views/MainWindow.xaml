@@ -3,43 +3,95 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Taskmanager" 
+        xmlns:local="clr-namespace:Taskmanager"  
         xmlns:viewmodels="clr-namespace:Taskmanager.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" 
-        Height="450" 
-        Width="800"
-        WindowStyle="None"
-        ResizeMode="CanResizeWithGrip"
-        AllowsTransparency="True"
-        Opacity="1"
-        Background="Wheat">
-
-    <Window.DataContext>
-        <viewmodels:ViewModelTest/>
-    </Window.DataContext>
-    
-    <Grid Opacity="1">
         
+        WindowStyle="None"
+        Height="450" Width="800" MinWidth="300"
+        ResizeMode="CanResizeWithGrip" AllowsTransparency="True"
+        Background="Transparent" 
+        Title="{Binding Title}">
+
+    <!-- DataContext connect -->
+    <Window.DataContext>
+        <viewmodels:MainWindow_VM/>
+    </Window.DataContext>
+
+    <Grid Background="{StaticResource BaseBrush}">
+
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Row="0"
-                    Grid.ColumnSpan="2"
-                    Background="#271821"
-                    Opacity="1">
-        </StackPanel>
+        <!--#region Верхняя панель -->
+        <DockPanel Grid.Row="0"
+                   Grid.ColumnSpan="2"
+                   Background="Transparent"
+                   HorizontalAlignment="Stretch"
+                   Height="20">
+            <ContentControl Content="{StaticResource LogoIcon}"
+                            Width="40" Height="40"
+                            HorizontalAlignment="Left"/>
 
-        <TextBlock  Grid.Row="1"
-                    FontSize="{StaticResource H1}"
-                    Text="{Binding Cliks}"/>
-        <Button Grid.Column="1" Content="Button" HorizontalAlignment="Left" Margin="377,215,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+            <TextBlock Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}"
+                       FontFamily="{StaticResource BaseFont}"
+                       FontSize="{StaticResource Big}"
+                       Foreground="{StaticResource WhiteBrush}"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Width="100"/>
+
+
+            <StackPanel Width="130" 
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal"
+                        FlowDirection="RightToLeft">
+
+                <Button Style="{StaticResource TopButtons}">
+                    <ContentControl Content="{StaticResource Test}" 
+                                    Width="40" Height="20"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"/>
+                </Button>
+
+                <Button Style="{StaticResource TopButtons}">
+                    <ContentControl Content="{StaticResource Minimize}"
+                                    Width="40" Height="20"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"/>
+                </Button>
+
+                <Button Style="{StaticResource TopButtons}">
+                    <ContentControl Content="{StaticResource Minimize}"/>
+                </Button>
+            </StackPanel>
+        </DockPanel>
+        <!--#endregion-->
+
+        <!--#region Боковое меню -->
+        <StackPanel Grid.Row="1"
+                    Grid.Column="0"
+                    Orientation="Vertical">
+            <Button Width="150"
+                    Height="30"
+                    Command=""/>
+        </StackPanel>
+        <!--#endregion-->
+
+
+        <Frame  Grid.Row="1" Grid.Column="1"
+                Background="Gray">
+
+        </Frame>
     </Grid>
+
+
+
 </Window>
