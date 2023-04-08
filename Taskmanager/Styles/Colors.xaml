@@ -4,7 +4,13 @@
     <SolidColorBrush x:Key="BaseBrush" Color="#212121"/>
     <Color x:Key="BaseColor">#212121</Color>
 
-    <SolidColorBrush x:Key="WhiteBrush" Color="#ffffff"/>
+    <SolidColorBrush x:Key="GrayBrush" Color="#383838"/>
+    <Color x:Key="GrayColor">#383838</Color>
+
+    <SolidColorBrush x:Key="WhiteBrushButton" Color="#ffffff" Opacity="0.5"/>
     <Color x:Key="WhiteColor">#ffffff</Color>
+
+    <SolidColorBrush x:Key="WhiteBrush" Color="#ffffff"/>
+    <Color x:Key="WhiteColorButton">#ffffff</Color>
 
 </ResourceDictionary>

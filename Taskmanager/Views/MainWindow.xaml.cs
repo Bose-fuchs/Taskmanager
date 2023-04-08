@@ -24,5 +24,25 @@ namespace Taskmanager
         {
             InitializeComponent();
         }
+
+        private void Min_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Max_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Cnl_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
+
+        private void WindowDragAndDrop(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
     }
 }
