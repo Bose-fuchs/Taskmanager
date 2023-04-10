@@ -25,24 +25,28 @@ namespace Taskmanager
             InitializeComponent();
         }
 
-        private void Min_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Max_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Cnl_Click(object sender, RoutedEventArgs e)
-        {
-            System.Windows.Application.Current.Shutdown();
-        }
-
-        private void WindowDragAndDrop(object sender, MouseButtonEventArgs e)
+        private bool IsMaximized = false;
+        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
+
+            if (e.ClickCount == 2)
+            {
+                if (IsMaximized)
+                {
+                    this.WindowState = WindowState.Normal;
+                    IsMaximized = false; 
+                } else
+                {
+                    this.WindowState = WindowState.Maximized;
+                    IsMaximized = true;
+                }
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

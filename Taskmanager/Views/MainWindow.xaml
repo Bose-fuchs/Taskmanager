@@ -4,13 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Taskmanager"  
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:viewmodels="clr-namespace:Taskmanager.ViewModels"
-        mc:Ignorable="d" Padding="2"
-        
         WindowStyle="None"
-        Height="450" Width="800" MinWidth="500"
-        ResizeMode="CanResizeWithGrip" AllowsTransparency="True"
-        Background="Transparent" 
+        Height="550" MinWidth="900"
+        ResizeMode="CanResize" AllowsTransparency="True"
+        Background="Transparent"  WindowStartupLocation="CenterScreen"
         Title="{Binding Title}">
 
     <!-- DataContext connect -->
@@ -18,79 +17,129 @@
         <viewmodels:MainWindow_VM/>
     </Window.DataContext>
 
-    <Grid Background="{StaticResource BaseBrush}">
-
+    <Grid>
+        <!--#region Definitions -->
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-
-        <!--#region Верхняя панель -->
-        <DockPanel Grid.Row="0"
-                   Grid.ColumnSpan="2"
-                   Background="Transparent"
-                   HorizontalAlignment="Stretch"
-                   Height="20"
-                   MouseLeftButtonDown="WindowDragAndDrop">
-            <Image Source="{StaticResource Logo}"/>
-
-            <TextBlock Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}"
-                       FontFamily="{StaticResource BaseFont}"
-                       FontSize="{StaticResource Regular}"
-                       Foreground="{StaticResource WhiteBrush}"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Width="100" Margin="10, 0, 0, 0"/>
-
-
-            <StackPanel Width="130" 
-                        HorizontalAlignment="Right"
-                        Orientation="Horizontal"
-                        FlowDirection="RightToLeft">
-
-                <Button Style="{StaticResource TopButtons}"
-                        Click="Cnl_Click">
-                    <Image Source="{StaticResource Close}"/>
-                </Button>
-
-                <Button Style="{StaticResource TopButtons}"
-                        Click="Max_Click">
-                    <Image Source="{StaticResource Max}"/>
-                </Button>
-
-                <Button Style="{StaticResource TopButtons}"
-                        Click="Min_Click">
-                    <Image Source="{StaticResource Min}"/>
-                </Button>
-            </StackPanel>
-        </DockPanel>
         <!--#endregion-->
 
-        <!--#region Боковое меню -->
-        <StackPanel Grid.Row="1"
-                    Grid.Column="0"
-                    Orientation="Vertical"
-                    Margin="0, 20, 0, 0">
-            <Button Style="{StaticResource LeftMenu}"/>
-            <Button Style="{StaticResource LeftMenu}"/>
-            <Button Style="{StaticResource LeftMenu}"/>
-            <Button Style="{StaticResource LeftMenu}"/>
+        <!--#region Border основного окна -->
+        <Border Background="{StaticResource BaseBrush}"
+                CornerRadius="20" Grid.ColumnSpan="2" Grid.RowSpan="2"
+                MouseLeftButtonDown="Border_MouseLeftButtonDown">
+            <!--#region Левое меню -->
+            <Grid>
 
-        </StackPanel>
+                <!--#region Definitions -->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="70"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <!--#endregion-->
+
+                <!--#region Аватарка -->
+                <Border Width="55" Height="55" CornerRadius="100"
+                         Grid.Row="1" Grid.Column="0"
+                         HorizontalAlignment="Left"
+                         Margin="10, 0" Background="{StaticResource WhiteBrush}">
+                    <Ellipse>
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="{StaticResource Close}"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </Border>
+                <!--#endregion-->
+
+                <!--#region Данные пользователя -->
+                <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"
+                            Orientation="Vertical" Margin="80, 0, 0, 0">
+                    <TextBlock FontSize="{StaticResource H1}"
+                               Foreground="{StaticResource WhiteBrush}"
+                               FontFamily="{StaticResource BaseFont}"
+                               Text="Имя пользователя"/>
+                    <TextBlock FontSize="{StaticResource Regular}"
+                               Foreground="{StaticResource GrayBrush}"
+                               FontFamily="{StaticResource BaseFont}"
+                               Text="useremail@huita.com"/>
+                </StackPanel>
+                <!--#endregion-->
+
+                <!--#region Левое меню радиобатонов -->
+                <StackPanel Orientation="Vertical" 
+                            VerticalAlignment="Top" HorizontalAlignment="Center"
+                            Grid.Row="2" Grid.Column="0">
+
+                    <RadioButton Style="{StaticResource BtnStyle}" IsChecked="True" Command="{Binding MyTask_Btn}">
+                        <RadioButton.Content>
+                            <StackPanel Orientation="Horizontal" Margin="20, 0, 0, 0"
+                                        VerticalAlignment="Center" HorizontalAlignment="Left">
+                                <Icon:PackIconMaterial Kind="Clock" Foreground="{StaticResource WhiteBrush}"/>
+                                <TextBlock Text="Мои задачи" Style="{StaticResource LeftMenu_TB}"/>
+                            </StackPanel>
+                        </RadioButton.Content>
+                    </RadioButton>
+
+                    <RadioButton Style="{StaticResource BtnStyle}" Command="{Binding MyPurpose_Btn}">
+                        <RadioButton.Content>
+                            <StackPanel Orientation="Horizontal" Margin="20, 0, 0, 0"
+                                        VerticalAlignment="Center" HorizontalAlignment="Left">
+                                <Icon:PackIconMaterial Kind="Manjaro" Foreground="{StaticResource WhiteBrush}"/>
+                                <TextBlock Text="Назначено" Style="{StaticResource LeftMenu_TB}"/>
+                            </StackPanel>
+                        </RadioButton.Content>
+                    </RadioButton>
+
+                    <RadioButton Style="{StaticResource BtnStyle}" Command="{Binding Calendar_Btn}">
+                        <RadioButton.Content>
+                            <StackPanel Orientation="Horizontal" Margin="20, 0, 0, 0"
+                                        VerticalAlignment="Center" HorizontalAlignment="Left">
+                                <Icon:PackIconMaterial Kind="Calendar" Foreground="{StaticResource WhiteBrush}"/>
+                                <TextBlock Text="Календарь" Style="{StaticResource LeftMenu_TB}"/>
+                            </StackPanel>
+                        </RadioButton.Content>
+                    </RadioButton>
+
+                </StackPanel>
+                <!--#endregion-->
+
+                <DockPanel Grid.Column="1" Grid.Row="0">
+                    <Button Style="{StaticResource ExitBtn}"
+                        HorizontalAlignment="Right" Background="Transparent"
+                        DockPanel.Dock="Right" Click="Button_Click"/>
+                </DockPanel>
+                <Button Style="{StaticResource ExitBtn}"
+                        HorizontalAlignment="Right" Background="Transparent"
+                        Grid.Column="1" Grid.Row="0" Click="Button_Click"/>
+            </Grid>
+            <!--#endregion-->
+
+        </Border>
+        <!--#endregion-->
+
+        <!--#region Frame -->
+        <Border Background="{StaticResource GrayBrush}"
+                CornerRadius="4, 0, 20 ,0"
+                Grid.Column="1" Grid.Row="1">
+            <Frame Content="{Binding CurrentPage}"
+                   Opacity="{Binding FrameOpacity}"
+                   NavigationUIVisibility="Hidden"/>
+        </Border>
         <!--#endregion-->
 
 
-        <Frame  Grid.Row="1" Grid.Column="1"
-                Background="Gray">
-
-        </Frame>
     </Grid>
-
 
 
 </Window>
