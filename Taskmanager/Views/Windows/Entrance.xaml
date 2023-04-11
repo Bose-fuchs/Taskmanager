@@ -1,0 +1,63 @@
+﻿<Window x:Class="Taskmanager.Views.Windows.Entrance"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Taskmanager.Views.Windows"
+        xmlns:viewmodels="clr-namespace:Taskmanager.ViewModels"
+        mc:Ignorable="d" WindowStyle="None"
+        Height="300" Width="450"
+        ResizeMode="NoResize" AllowsTransparency="True"
+        Background="Transparent"  WindowStartupLocation="CenterScreen">
+
+    <Window.DataContext>
+        <viewmodels:Entrance_VM/>
+    </Window.DataContext>
+    
+    <Border Background="{StaticResource BaseBrush}" CornerRadius="20"
+            MouseLeftButtonDown="Border_MouseLeftButtonDown">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0"
+                        MouseLeftButtonDown="Border_MouseLeftButtonDown">
+                <Button Style="{StaticResource ExitBtn}"
+                        HorizontalAlignment="Right" Background="Transparent"
+                        Grid.Column="1" Grid.Row="0" Click="Button_Click"/>
+            </StackPanel>
+
+            <Grid Grid.Row="1">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+
+                    <TextBlock Text="{StaticResource login}"
+                               Foreground="{StaticResource WhiteBrush}"
+                               FontSize="{StaticResource Small}"
+                               FontFamily="{StaticResource BaseFont}"/>
+
+                    <TextBox Width="120"
+                         Height="20"
+                         Text="{Binding Login}"/>
+                    
+                    <TextBlock Text="{StaticResource Password}"
+                               Foreground="{StaticResource WhiteBrush}"
+                               FontSize="{StaticResource Small}"
+                               FontFamily="{StaticResource BaseFont}"/>
+                    
+                    <TextBox Width="120"
+                         Height="20"
+                         Text="{Binding Password}"/>
+                    
+                    <Button Width="120" Height="20"
+                            Content="Войти" Command="{Binding Login_Click}"/>
+                    
+                    <Button Width="120" Height="20"
+                            Content="Зарегистрироваться" Command="{Binding Registration_Click}"/>
+                </StackPanel>
+            </Grid>
+            
+        </Grid>
+    </Border>
+</Window>

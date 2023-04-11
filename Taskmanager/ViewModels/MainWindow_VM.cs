@@ -10,6 +10,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using Taskmanager.Pages;
+using Taskmanager.Properties;
 using Taskmanager.ViewModels.Base;
 
 namespace Taskmanager.ViewModels
@@ -20,7 +21,7 @@ namespace Taskmanager.ViewModels
         /// <summary>
         /// Это заголовок окна
         /// </summary>
-        private string _Title = "Планировщик";
+        private string _Title = Settings.Default.login;
         public string Title
         {
             get => _Title;

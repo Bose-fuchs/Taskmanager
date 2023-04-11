@@ -4,9 +4,9 @@
 
     <FontFamily x:Key="BaseFont">Consolas</FontFamily>
     
-    <system:Double x:Key="Smal">14</system:Double>
-    <system:Double x:Key="Regular">14</system:Double>
-    <system:Double x:Key="Big">14</system:Double>
-    <system:Double x:Key="H1">14</system:Double>
+    <system:Double x:Key="Small">14</system:Double>
+    <system:Double x:Key="Regular">18</system:Double>
+    <system:Double x:Key="Big">21</system:Double>
+    <system:Double x:Key="H1">24</system:Double>
 
 </ResourceDictionary>

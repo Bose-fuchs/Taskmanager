@@ -65,11 +65,11 @@
                 <!--#region Данные пользователя -->
                 <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"
                             Orientation="Vertical" Margin="80, 0, 0, 0">
-                    <TextBlock FontSize="{StaticResource H1}"
+                    <TextBlock FontSize="{StaticResource Regular}"
                                Foreground="{StaticResource WhiteBrush}"
                                FontFamily="{StaticResource BaseFont}"
-                               Text="Имя пользователя"/>
-                    <TextBlock FontSize="{StaticResource Regular}"
+                               Text="{Binding Title}"/>
+                    <TextBlock FontSize="{StaticResource Small}"
                                Foreground="{StaticResource GrayBrush}"
                                FontFamily="{StaticResource BaseFont}"
                                Text="useremail@huita.com"/>
