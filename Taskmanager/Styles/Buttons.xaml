@@ -3,6 +3,46 @@
                     xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks">
 
 
+    <Style x:Key="BtnStl" TargetType="Button">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFAE59D8"/>
+                    <GradientStop Color="#FF9B2BD2" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Template">
+
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="5" Background="{TemplateBinding Background}" BorderThickness="1">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+                        </ContentPresenter>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+
+    </Style>
+
+    <Style x:Key="TxtBox" TargetType="TextBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border CornerRadius="3" Background="{TemplateBinding Background}" BorderThickness="1">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+                        </ContentPresenter>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
     <Style x:Key="TopButtons" TargetType="Button">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Width" Value="40"/>
@@ -166,24 +206,24 @@
 
     <Style x:Key="ExitBtn" TargetType="Button">
         <Setter Property="Margin" Value="0, 5, 15, 0"/>
-    
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
 
                     <Border x:Name="border"  Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" CornerRadius="200">
-                        
+
                         <Border.Background>
                             <SolidColorBrush x:Name="BorderBackground"
                                              Color="{StaticResource BaseColor}"/>
                         </Border.Background>
-                        
+
                         <Grid>
                             <Icon:PackIconMaterial Kind="Power" Foreground="{StaticResource WhiteBrush}" 
                                                    VerticalAlignment="Center" HorizontalAlignment="Center" Width="12" Height="12"/>
                             <ContentPresenter/>
                         </Grid>
-                        
+
                     </Border>
 
                     <ControlTemplate.Triggers>

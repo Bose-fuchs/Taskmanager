@@ -5,6 +5,7 @@
              StartupUri="Views/Windows/Entrance.xaml">
 
     <Application.Resources>
+
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles/Colors.xaml"/>

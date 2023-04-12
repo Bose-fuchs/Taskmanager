@@ -3,61 +3,114 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Taskmanager.Views.Windows"
+        xmlns:local="clr-namespace:Taskmanager.Views.Windows" 
+        xmlns:local="clr-namespace:" xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
         xmlns:viewmodels="clr-namespace:Taskmanager.ViewModels"
         mc:Ignorable="d" WindowStyle="None"
         Height="300" Width="450"
         ResizeMode="NoResize" AllowsTransparency="True"
         Background="Transparent"  WindowStartupLocation="CenterScreen">
 
+
     <Window.DataContext>
         <viewmodels:Entrance_VM/>
     </Window.DataContext>
-    
+
     <Border Background="{StaticResource BaseBrush}" CornerRadius="20"
             MouseLeftButtonDown="Border_MouseLeftButtonDown">
         <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="43*"/>
+                <ColumnDefinition Width="32*"/>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="17*"/>
             </Grid.RowDefinitions>
 
             <StackPanel Grid.Row="0"
-                        MouseLeftButtonDown="Border_MouseLeftButtonDown">
+                        MouseLeftButtonDown="Border_MouseLeftButtonDown" Grid.ColumnSpan="2" >
                 <Button Style="{StaticResource ExitBtn}"
                         HorizontalAlignment="Right" Background="Transparent"
                         Grid.Column="1" Grid.Row="0" Click="Button_Click"/>
+
             </StackPanel>
 
-            <Grid Grid.Row="1">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+            <Grid Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="-2,27,2,3">
+                <StackPanel Orientation="Vertical"  HorizontalAlignment="Center" Margin="0, 40">
 
-                    <TextBlock Text="{StaticResource login}"
+                    <TextBlock Margin="0,2"
+                               HorizontalAlignment="Center"
+                               Text="{StaticResource login}"
                                Foreground="{StaticResource WhiteBrush}"
                                FontSize="{StaticResource Small}"
-                               FontFamily="{StaticResource BaseFont}"/>
+                               FontFamily="{DynamicResource BaseFont}"/>
 
-                    <TextBox Width="120"
+                    <TextBox
+                        Style="{StaticResource TxtBox}"
+                         Margin="0,2"
+                         Width="120"
                          Height="20"
                          Text="{Binding Login}"/>
-                    
-                    <TextBlock Text="{StaticResource Password}"
+
+                    <TextBlock 
+                               Margin="0,3"
+                               HorizontalAlignment="Center"
+                               Text="{StaticResource Password}"
                                Foreground="{StaticResource WhiteBrush}"
                                FontSize="{StaticResource Small}"
                                FontFamily="{StaticResource BaseFont}"/>
-                    
-                    <TextBox Width="120"
+
+                    <TextBox Style="{StaticResource TxtBox}"   
+                         Margin="0,2" 
+                         Width="120"
                          Height="20"
                          Text="{Binding Password}"/>
-                    
-                    <Button Width="120" Height="20"
-                            Content="Войти" Command="{Binding Login_Click}"/>
-                    
-                    <Button Width="120" Height="20"
-                            Content="Зарегистрироваться" Command="{Binding Registration_Click}"/>
+
+                    <Button 
+                            
+                            Margin="0,10,0,0"
+                            Width="120" Height="25"
+                            Content="Войти" Command="{Binding Login_Click}" FontWeight="Bold" FontFamily="Yu Gothic UI Light">
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush  StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#FFD9EDFF" Offset="0"/>
+                                            <GradientStop Color="#FFC0DEFF" Offset="0.445"/>
+                                            <GradientStop Color="#FFAFD1F8" Offset="0.53"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Microsoft_Windows_Themes:ButtonChrome x:Name="Chrome" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" RenderMouseOver="{TemplateBinding IsMouseOver}" RenderPressed="{TemplateBinding IsPressed}" RenderDefaulted="{TemplateBinding IsDefaulted}" SnapsToDevicePixels="true">
+                                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                            </Microsoft_Windows_Themes:ButtonChrome>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                            </Button.Style>
+
+                    </Button>
+
+                    <Polygon Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" Stroke="Gray" Points="0,0,109,0" Margin="3,10,0, -8"/>
+                    <TextBlock Text="ИЛИ" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" Foreground="Gray" FontSize="10" TextAlignment="Center" Margin="0,0,0,0" Width="40" Background="#212121"></TextBlock>
+
+                    <Button 
+                            Style="{StaticResource BtnStl}"
+                            Margin="0,6,0,0"
+                            Width="120" Height="27"
+                            Content="Зарегистрироваться" Command="{Binding Registration_Click}" FontSize="11" FontFamily="Yu Gothic UI Light"/>
                 </StackPanel>
+
             </Grid>
-            
+
         </Grid>
     </Border>
 </Window>
