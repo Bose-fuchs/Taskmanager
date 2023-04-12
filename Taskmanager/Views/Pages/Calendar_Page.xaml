@@ -12,20 +12,16 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+
         </Grid.ColumnDefinitions>
+        <Calendar HorizontalAlignment="Left" Margin="230,120,0,0" VerticalAlignment="Top" InputScope="Default" OpacityMask="White" Background="Black" BorderBrush="#FF8030E6" Foreground="#FFE8E8E8">
+            <Calendar.FocusVisualStyle>
+                <Style/>
+            </Calendar.FocusVisualStyle>
+        </Calendar>
     </Grid>
 </Page>
