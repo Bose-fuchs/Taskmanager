@@ -12,6 +12,7 @@ using System.Windows.Media;
 using Taskmanager.Pages;
 using Taskmanager.Properties;
 using Taskmanager.ViewModels.Base;
+using Taskmanager.Models;
 
 namespace Taskmanager.ViewModels
 {
@@ -96,6 +97,7 @@ namespace Taskmanager.ViewModels
 
             FrameOpacity = 1;
             CurrentPage = MyTasks;
+
         }
 
         public ICommand MyTask_Btn

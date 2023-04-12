@@ -250,7 +250,6 @@
     <Compile Include="Services\HTTPClient.cs" />
     <Compile Include="Services\Quest.cs" />
     <Compile Include="Services\RelayCommand.cs" />
-    <Compile Include="Services\Data.cs" />
     <Compile Include="Services\Token.cs" />
     <Compile Include="ViewModels\Base\VM_Base.cs" />
     <Compile Include="ViewModels\Calendar_VM.cs" />

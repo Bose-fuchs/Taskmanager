@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Taskmanager.Services
 {
+
     public class Quest
     {
         public Guid guid { get; set; }

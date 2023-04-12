@@ -4,20 +4,59 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Taskmanager.Pages"
+      xmlns:viewmodels="clr-namespace:Taskmanager.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="650"
       Title="Task_Page" Background="Transparent">
 
+    <Page.DataContext>
+        <viewmodels:Task_VM/>
+    </Page.DataContext>
 
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="450"/>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="450*"/>
+            <ColumnDefinition Width="200*"/>
         </Grid.ColumnDefinitions>
 
-        <DataGrid >
-            
+        <DataGrid ItemsSource="{Binding Path=DataList, Mode=OneWay}"
+                  SelectedItem="{Binding SelectedRow}"
+                  SelectionMode="Single" IsReadOnly="False"
+                  AutoGenerateColumns="False" x:Name="DG_Table">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название" Width="*"
+                                    Binding="{Binding title}"/>
+
+                <DataGridTextColumn Header="status" Width="*"
+                                    Binding="{Binding status}"/>
+
+            </DataGrid.Columns>
+
         </DataGrid>
+        <StackPanel Grid.Column="1"
+                    Orientation="Horizontal">
+            
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Заголовок"/>
+                <TextBlock Text="Описание"/>
+                <TextBlock Text="Статус"/>
+                <TextBlock Text="Создано"/>
+                <TextBlock Text="До"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical">
+                <TextBox Text="{Binding SelectedRow.title}"/>
+                <TextBox Text="{Binding SelectedRow.lore}"/>
+                <TextBox Text="{Binding SelectedRow.status}"/>
+                <TextBox Text="{Binding SelectedRow.create}"/>
+                <TextBox Text="{Binding SelectedRow.expire}"/>
+                <Button Width="100" Height="20" Content="Добавить"
+                        Command="{Binding AddQuest}"/>
+
+            </StackPanel>
+            
+        </StackPanel>
     </Grid>
 
 </Page>
